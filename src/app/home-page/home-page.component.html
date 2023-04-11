@@ -40,7 +40,6 @@
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"
-      (click)="tarUser(row.id)"
       [appContextMenu]="myMenu"
     >
       <ng-template #myMenu>
@@ -61,6 +60,9 @@
             Delete
           </button>
         </div>
+      </ng-template>
+      <ng-template #empty>
+        <h1>test</h1>
       </ng-template>
     </tr>
   </table>

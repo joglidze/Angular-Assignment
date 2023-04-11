@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { UserInfoComponent } from './user-info/user-info.component';
 
 const routes: Routes = [
   {
@@ -12,15 +9,18 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthComponent,
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'home',
-    component: HomePageComponent,
+
+    loadChildren: () =>
+      import('./home-page/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'user/:id',
-    component: UserInfoComponent,
+    loadChildren: () =>
+      import('./user-info/user-info.module').then((m) => m.UserInfoModule),
   },
 ];
 

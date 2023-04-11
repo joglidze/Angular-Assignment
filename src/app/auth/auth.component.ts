@@ -19,14 +19,11 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: FormGroup) {
-    if (form.status == 'INVALID') {
-      this.error = true;
-    } else {
-      this.error = false;
+    if (form.value.userName === 'admin' && form.value.password === 'admin') {
       this.router.navigateByUrl('home');
+    } else {
+      this.error = true;
     }
-    console.log(form);
-    this.error = form.status === 'INVALID' ? true : false;
   }
 
   valid(control: FormControl) {
