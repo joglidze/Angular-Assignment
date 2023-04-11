@@ -1,0 +1,57 @@
+<div class="h-100 d-flex align-items-center justify-content-center">
+  <div class="rounded-1 m-3" style="width: 450px !important">
+    <div *ngIf="error" class="alert alert-danger p-2" role="alert">
+      user name or password incorrect
+    </div>
+    <div class="border">
+      <div class="bg-light p-1">
+        <h1 class="m-1">Angular Signin</h1>
+      </div>
+      <form class="m-4" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <div class="mb-3">
+          <label for="userName" class="form-label">USERNAME</label>
+          <input
+            type="text"
+            class="form-control"
+            id="userName"
+            name="userName"
+            formControlName="userName"
+            required
+          />
+          <ng-container
+            *ngIf="
+              !form.get('userName')?.value && form.get('userName')?.touched
+            "
+          >
+            <small class="text-danger">User Name required</small>
+          </ng-container>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">PASSWORD</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            formControlName="password"
+            id="password"
+            required
+          />
+          <ng-container
+            *ngIf="
+              !form.get('password')?.value && form.get('password')?.touched
+            "
+          >
+            <small class="text-danger">password is required</small>
+          </ng-container>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid || !form.dirty"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

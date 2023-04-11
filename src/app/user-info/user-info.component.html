@@ -1,0 +1,18 @@
+<div
+  class="h-100 w-100 m-auto d-flex align-items-center justify-content-center bg-img text-light"
+  *ngIf="loading"
+>
+  <div>
+    <div class="card-body text-center">
+      <div class="border border-2 bg-primary p-4 rounded-circle">
+        <div class="p-5">
+          <h1 style="font-size: 100px">{{ user?.name | slice : 0 : 1 }}</h1>
+        </div>
+      </div>
+      <div class="mt-5">
+        <h1 class="my-3">{{ user?.name }}</h1>
+        <p class="mb-1">{{ user?.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>
