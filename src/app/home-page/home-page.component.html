@@ -39,11 +39,13 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
+      (contextmenu)="remove()"
       *matRowDef="let row; columns: displayedColumns"
       [appContextMenu]="myMenu"
     >
       <ng-template #myMenu>
-        <div class="list-group bg-white">
+        
+        <div class="list-group bg-white test">
           <button
             type="button"
             (click)="tarUser(row.id)"
@@ -60,9 +62,6 @@
             Delete
           </button>
         </div>
-      </ng-template>
-      <ng-template #empty>
-        <h1>test</h1>
       </ng-template>
     </tr>
   </table>

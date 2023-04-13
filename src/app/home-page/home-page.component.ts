@@ -1,4 +1,12 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  ViewContainerRef,
+  Renderer2,
+  ElementRef,
+} from '@angular/core';
 import { HomeService } from '../core/services/home.service';
 import { User } from '../core/interefaces/user.interface';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,14 +22,16 @@ export class HomePageComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'Username', 'email', 'website'];
   loading: boolean = false;
   dataSource = new MatTableDataSource<User>();
-
-
+  currentRowId: any = 2;
   sub$ = new Subject();
 
   constructor(
     private homeService: HomeService,
     private router: Router,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private viewContainerRef: ViewContainerRef,
+    private renderer: Renderer2,
+    private elRef: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -52,5 +62,15 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub$.next(null);
     this.sub$.complete();
+  }
+
+  remove() {
+    let elements = this.elRef.nativeElement.querySelectorAll('.test');
+    const lastElement = elements[elements.length - 1];
+    elements.forEach((el: HTMLElement) => {
+      if (el !== lastElement || el !== elements[0]) {
+        this.renderer.removeChild(el.parentNode, el);
+      }
+    });
   }
 }
