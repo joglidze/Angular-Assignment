@@ -63,14 +63,4 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.sub$.next(null);
     this.sub$.complete();
   }
-
-  remove() {
-    let elements = this.elRef.nativeElement.querySelectorAll('.test');
-    const lastElement = elements[elements.length - 1];
-    elements.forEach((el: HTMLElement) => {
-      if (el !== lastElement || el !== elements[0]) {
-        this.renderer.removeChild(el.parentNode, el);
-      }
-    });
-  }
 }
