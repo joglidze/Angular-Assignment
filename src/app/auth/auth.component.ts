@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    userName: new FormControl('', [Validators.required, this.valid]),
-    password: new FormControl('', [Validators.required, this.valid]),
+    userName: new FormControl('', [Validators.required, this.valid.bind]),
+    password: new FormControl('', [Validators.required, this.valid.bind]),
+    
   });
   error: boolean = false;
   constructor(private router: Router) {}

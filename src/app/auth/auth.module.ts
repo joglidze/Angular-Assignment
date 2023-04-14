@@ -12,6 +12,7 @@ import { AuthRoutingModule } from './auth-routing.module';
     CommonModule,
     HttpClientModule,
     AuthRoutingModule,
+    
     ReactiveFormsModule,
   ],
   exports: [AuthComponent],
