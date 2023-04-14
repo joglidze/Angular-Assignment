@@ -1,8 +1,12 @@
 <div
   class="h-100 w-100 m-auto d-flex align-items-center justify-content-center bg-img text-light"
-  *ngIf="loading"
+  
 >
-  <div>
+
+<div *ngIf="!loading">
+  <span class="loader"></span>
+</div >
+  <div *ngIf="loading">
     <div class="card-body text-center">
       <div class="border border-2 bg-primary p-4 rounded-circle">
         <div class="p-5">
