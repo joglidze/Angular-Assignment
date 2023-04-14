@@ -1,12 +1,15 @@
 <div
-  class="h-100 w-75 m-auto d-flex align-items-center justify-content-center flex-column  "
-  *ngIf="loading"
+  class="h-100 w-75 m-auto d-flex align-items-center justify-content-center flex-column"
 >
-
   <div class="w-100 text-start">
     <h1>User List</h1>
   </div>
+  <div *ngIf="!loading">
+    <span class="loader"></span>
+  </div>
+  
   <table
+    *ngIf="loading"
     mat-table
     [dataSource]="dataSource"
     class="mat-elevation-z8"
